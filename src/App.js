@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import CircleSelector from "./components/CircleSelector";
+import Circles from "./components/Circles";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    selected: 1,
+  };
+  handleCircleSelect = (e, i) => {
+    if (this.state !== i) {
+      this.setState({ selected: i });
+    }
+  };
+  render() {
+    return (
+      <div className='App'>
+        <header className='App-header'>UNIT 4 FINAL ASSESSMENT</header>
+        <main>
+          <CircleSelector
+            handleCircleSelect={this.handleCircleSelect}
+            selected={this.state.selected}
+          ></CircleSelector>
+          <Circles selected={this.state.selected}></Circles>
+          <div className='hidden'>Dylan was here</div>
+        </main>
+      </div>
+    );
+  }
 }
 
 export default App;
